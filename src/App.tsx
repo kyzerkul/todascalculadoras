@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,6 +6,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CalculatorsDirectory from "./pages/CalculatorsDirectory";
+import CategoryPage from "./pages/CategoryPage";
+import Blog from "./pages/Blog";
+import About from "./pages/About";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import Legal from "./pages/Legal";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +24,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/calculadoras" element={<CalculatorsDirectory />} />
+          <Route path="/categoria/:categoryId" element={<CategoryPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/sobre-nosotros" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="/legal" element={<Legal />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

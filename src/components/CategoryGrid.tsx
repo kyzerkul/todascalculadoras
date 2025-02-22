@@ -1,8 +1,8 @@
 
-import { Calculator } from "lucide-react";
+import { Calculator, PlusSquare, Flask, Heart, Calendar, BarChart } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 
-const categories = [
+export const categories = [
   {
     title: "Financieras",
     description: "Hipotecas, préstamos, inversiones",
@@ -11,27 +11,27 @@ const categories = [
   {
     title: "Matemáticas",
     description: "Álgebra, geometría, trigonometría",
-    icon: <Calculator className="w-8 h-8" />,
+    icon: <PlusSquare className="w-8 h-8" />,
   },
   {
     title: "Científicas",
     description: "Física, química, conversiones",
-    icon: <Calculator className="w-8 h-8" />,
+    icon: <Flask className="w-8 h-8" />,
   },
   {
     title: "Salud",
     description: "IMC, calorías, nutrición",
-    icon: <Calculator className="w-8 h-8" />,
+    icon: <Heart className="w-8 h-8" />,
   },
   {
     title: "Fechas",
     description: "Edad, días entre fechas",
-    icon: <Calculator className="w-8 h-8" />,
+    icon: <Calendar className="w-8 h-8" />,
   },
   {
     title: "Estadísticas",
     description: "Probabilidad, análisis de datos",
-    icon: <Calculator className="w-8 h-8" />,
+    icon: <BarChart className="w-8 h-8" />,
   },
 ];
 

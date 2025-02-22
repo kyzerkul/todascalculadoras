@@ -2,22 +2,41 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { categories } from "@/components/CategoryGrid";
 
 const CategoryPage = () => {
+  const { categoryId } = useParams();
+  const category = categories.find(
+    (cat) => cat.title.toLowerCase().replace(/\s+/g, '-') === categoryId
+  );
+
+  if (!category) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
+        <div className="container max-w-6xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Categoría no encontrada</h1>
+          <Link to="/" className="text-primary hover:underline">
+            Volver al inicio
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
       <div className="container max-w-6xl mx-auto px-4">
         {/* Category Header */}
         <div className="mb-12 text-center animate-fade-down">
           <div className="flex justify-center mb-4">
-            <Calculator className="w-12 h-12 text-primary" />
+            {category.icon}
           </div>
           <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
-            Calculadoras Financieras
+            Calculadoras {category.title}
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Herramientas especializadas para todas tus necesidades financieras, desde préstamos hasta inversiones.
+            {category.description}
           </p>
         </div>
 
@@ -27,10 +46,10 @@ const CategoryPage = () => {
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-lg mb-2">
-                  Calculadora Financiera {index}
+                  Calculadora {category.title} {index}
                 </h3>
                 <p className="text-sm text-gray-600 mb-4">
-                  Descripción específica de esta calculadora financiera.
+                  Descripción específica de esta calculadora.
                 </p>
                 <Button
                   className="w-full"

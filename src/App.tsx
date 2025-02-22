@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CalculatorsDirectory from "./pages/CalculatorsDirectory";
 import CategoryPage from "./pages/CategoryPage";
+import CalculatorPage from "./pages/CalculatorPage";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/calculadoras" element={<CalculatorsDirectory />} />
               <Route path="/categoria/:categoryId" element={<CategoryPage />} />
+              <Route path="/calculadora/:calculatorId" element={<CalculatorPage />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/sobre-nosotros" element={<About />} />
               <Route path="/faq" element={<FAQ />} />

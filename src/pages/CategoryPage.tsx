@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CategoryPage = () => {
   return (
@@ -31,7 +32,14 @@ const CategoryPage = () => {
                 <p className="text-sm text-gray-600 mb-4">
                   Descripción específica de esta calculadora financiera.
                 </p>
-                <Button className="w-full">Usar Calculadora</Button>
+                <Button
+                  className="w-full"
+                  asChild
+                >
+                  <Link to={`/calculadora/${index}`}>
+                    Usar Calculadora
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           ))}

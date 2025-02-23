@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
@@ -22,91 +23,11 @@ const categoryCalculators = {
       description: "Calcula en cuántos años se duplicará tu inversión.",
     },
   ],
-  "matematicas": [
-    {
-      id: "porcentaje",
-      title: "Calculadora de Porcentaje",
-      description: "Calcula porcentajes y variaciones porcentuales fácilmente.",
-    },
-    {
-      id: "fracciones",
-      title: "Operaciones con Fracciones",
-      description: "Suma, resta, multiplica y divide fracciones.",
-    },
-    {
-      id: "ecuaciones",
-      title: "Resuelve Ecuaciones",
-      description: "Resuelve ecuaciones lineales y cuadráticas paso a paso.",
-    },
-  ],
-  "cientificas": [
-    {
-      id: "conversion-unidades",
-      title: "Conversión de Unidades",
-      description: "Convierte entre diferentes unidades de medida.",
-    },
-    {
-      id: "formula-cuadratica",
-      title: "Fórmula Cuadrática",
-      description: "Encuentra las raíces de una ecuación cuadrática.",
-    },
-    {
-      id: "velocidad-promedio",
-      title: "Velocidad Promedio",
-      description: "Calcula la velocidad promedio dado tiempo y distancia.",
-    },
-  ],
-  "salud": [
-    {
-      id: "imc",
-      title: "Índice de Masa Corporal",
-      description: "Calcula tu IMC y conoce tu rango de peso saludable.",
-    },
-    {
-      id: "calorias-diarias",
-      title: "Calorías Diarias",
-      description: "Calcula tus necesidades calóricas diarias.",
-    },
-    {
-      id: "frecuencia-cardiaca",
-      title: "Frecuencia Cardíaca",
-      description: "Calcula tu frecuencia cardíaca máxima y zonas de entrenamiento.",
-    },
-  ],
-  "fechas": [
-    {
-      id: "diferencia-fechas",
-      title: "Diferencia entre Fechas",
-      description: "Calcula los días, meses y años entre dos fechas.",
-    },
-    {
-      id: "edad",
-      title: "Calculadora de Edad",
-      description: "Calcula tu edad exacta en años, meses y días.",
-    },
-    {
-      id: "dias-habiles",
-      title: "Días Hábiles",
-      description: "Calcula los días hábiles entre dos fechas.",
-    },
-  ],
-  "estadisticas": [
-    {
-      id: "estadistica-basica",
-      title: "Estadística Básica",
-      description: "Calcula media, mediana, moda y desviación estándar.",
-    },
-    {
-      id: "probabilidad",
-      title: "Probabilidad Simple",
-      description: "Calcula probabilidades básicas y combinaciones.",
-    },
-    {
-      id: "regresion-lineal",
-      title: "Regresión Lineal",
-      description: "Calcula la línea de mejor ajuste para tus datos.",
-    },
-  ],
+  "matematicas": [],
+  "cientificas": [],
+  "salud": [],
+  "fechas": [],
+  "estadisticas": [],
 };
 
 const CategoryPage = () => {

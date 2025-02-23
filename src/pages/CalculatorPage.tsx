@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -6,7 +7,35 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import CalculatorInput from "@/components/CalculatorInput";
 
-const calculators = {
+type CalculatorInputConfig = {
+  id: string;
+  label: string;
+  type: string;
+  suffix?: string;
+  helper: string;
+};
+
+type InputBasedCalculator = {
+  title: string;
+  description: string;
+  inputs: CalculatorInputConfig[];
+  component?: never;
+};
+
+type ComponentBasedCalculator = {
+  title: string;
+  description: string;
+  component: () => Promise<React.ComponentType>;
+  inputs?: never;
+};
+
+type Calculator = InputBasedCalculator | ComponentBasedCalculator;
+
+type Calculators = {
+  [key: string]: Calculator;
+};
+
+const calculators: Calculators = {
   "prestamo-personal": {
     title: "Calculadora de Préstamo Personal",
     description: "Calcula tu pago mensual y el costo total del préstamo",
@@ -89,6 +118,10 @@ const calculators = {
   },
 };
 
+const isInputBasedCalculator = (calculator: Calculator): calculator is InputBasedCalculator => {
+  return 'inputs' in calculator;
+};
+
 const CalculatorPage = () => {
   const { calculatorId } = useParams();
   const { toast } = useToast();
@@ -98,7 +131,7 @@ const CalculatorPage = () => {
   const [CalculatorComponent, setCalculatorComponent] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
-    if (calculator && 'component' in calculator) {
+    if (calculator && !isInputBasedCalculator(calculator)) {
       calculator.component().then(component => {
         setCalculatorComponent(() => component);
       });
@@ -118,7 +151,7 @@ const CalculatorPage = () => {
     );
   }
 
-  if ('component' in calculator && CalculatorComponent) {
+  if (!isInputBasedCalculator(calculator) && CalculatorComponent) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
         <div className="container max-w-4xl mx-auto px-4">
@@ -150,6 +183,8 @@ const CalculatorPage = () => {
   };
 
   const calculateResult = () => {
+    if (!isInputBasedCalculator(calculator)) return;
+    
     const values = Object.values(inputs).map(Number);
     if (values.some(isNaN)) {
       toast({
@@ -217,7 +252,7 @@ const CalculatorPage = () => {
             <CardTitle>Introduce los datos</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {calculator.inputs.map((input) => (
+            {isInputBasedCalculator(calculator) && calculator.inputs.map((input) => (
               <CalculatorInput
                 key={input.id}
                 {...input}
@@ -263,3 +298,4 @@ const CalculatorPage = () => {
 };
 
 export default CalculatorPage;
+

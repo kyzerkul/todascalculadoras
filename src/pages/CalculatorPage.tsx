@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -10,7 +9,7 @@ import CalculatorInput from "@/components/CalculatorInput";
 type CalculatorInputConfig = {
   id: string;
   label: string;
-  type: string;
+  type: "number" | "text";
   suffix?: string;
   helper: string;
 };
@@ -298,4 +297,3 @@ const CalculatorPage = () => {
 };
 
 export default CalculatorPage;
-

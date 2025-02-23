@@ -1,5 +1,5 @@
 
-import { Calculator, PlusSquare, Flask, Heart, Calendar, BarChart } from "lucide-react";
+import { Calculator, PlusSquare, BarChart2, Heart, Calendar, BarChart } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 
 export const categories = [
@@ -16,7 +16,7 @@ export const categories = [
   {
     title: "Científicas",
     description: "Física, química, conversiones",
-    icon: <Flask className="w-8 h-8" />,
+    icon: <BarChart2 className="w-8 h-8" />,
   },
   {
     title: "Salud",

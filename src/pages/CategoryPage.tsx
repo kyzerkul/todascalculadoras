@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
@@ -28,6 +27,9 @@ const categoryCalculators = {
   "salud": [],
   "fechas": [],
   "estadisticas": [],
+  "programacion-y-tecnologia": [],
+  "conversiones": [],
+  "otras-calculadoras": [],
 };
 
 const CategoryPage = () => {

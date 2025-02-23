@@ -1,5 +1,5 @@
 
-import { Calculator, PlusSquare, BarChart2, Heart, Calendar, BarChart } from "lucide-react";
+import { Calculator, PlusSquare, BarChart2, Heart, Calendar, BarChart, Code2, ArrowLeftRight, CircleDot } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 
 export const categories = [
@@ -32,6 +32,21 @@ export const categories = [
     title: "Estadísticas",
     description: "Probabilidad, análisis de datos",
     icon: <BarChart className="w-8 h-8" />,
+  },
+  {
+    title: "Programación y Tecnología",
+    description: "Conversor de código, formateadores",
+    icon: <Code2 className="w-8 h-8" />,
+  },
+  {
+    title: "Conversiones",
+    description: "Unidades, monedas, medidas",
+    icon: <ArrowLeftRight className="w-8 h-8" />,
+  },
+  {
+    title: "Otras Calculadoras",
+    description: "Calculadoras especializadas",
+    icon: <CircleDot className="w-8 h-8" />,
   },
 ];
 

@@ -22,7 +22,23 @@ const categoryCalculators = {
       description: "Calcula en cuántos años se duplicará tu inversión.",
     },
   ],
-  "matematicas": [],
+  "matematicas": [
+    {
+      id: "calculadora-basica",
+      title: "Calculadora Básica",
+      description: "Realiza operaciones matemáticas básicas: suma, resta, multiplicación y división.",
+    },
+    {
+      id: "calculadora-cientifica",
+      title: "Calculadora Científica",
+      description: "Funciones científicas avanzadas, trigonometría, logaritmos y más.",
+    },
+    {
+      id: "calculadora-algebra",
+      title: "Calculadora de Álgebra",
+      description: "Resuelve ecuaciones algebraicas y sistemas de ecuaciones.",
+    },
+  ],
   "cientificas": [],
   "salud": [],
   "fechas": [],

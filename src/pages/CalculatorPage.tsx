@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -73,6 +72,21 @@ const calculators = {
       },
     ],
   },
+  "calculadora-basica": {
+    title: "Calculadora Básica",
+    description: "Realiza operaciones matemáticas básicas",
+    component: () => import("@/components/calculators/BasicCalculator").then(mod => mod.default),
+  },
+  "calculadora-cientifica": {
+    title: "Calculadora Científica",
+    description: "Funciones científicas avanzadas",
+    component: () => import("@/components/calculators/ScientificCalculator").then(mod => mod.default),
+  },
+  "calculadora-algebra": {
+    title: "Calculadora de Álgebra",
+    description: "Resuelve ecuaciones algebraicas",
+    component: () => import("@/components/calculators/AlgebraCalculator").then(mod => mod.default),
+  },
 };
 
 const CalculatorPage = () => {
@@ -81,6 +95,15 @@ const CalculatorPage = () => {
   const calculator = calculators[calculatorId as keyof typeof calculators];
   const [inputs, setInputs] = useState<Record<string, string>>({});
   const [result, setResult] = useState<number | null>(null);
+  const [CalculatorComponent, setCalculatorComponent] = useState<React.ComponentType | null>(null);
+
+  useEffect(() => {
+    if (calculator && 'component' in calculator) {
+      calculator.component().then(component => {
+        setCalculatorComponent(() => component);
+      });
+    }
+  }, [calculator]);
 
   if (!calculator) {
     return (
@@ -90,6 +113,33 @@ const CalculatorPage = () => {
           <Link to="/calculadoras" className="text-primary hover:underline">
             Ver todas las calculadoras
           </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if ('component' in calculator && CalculatorComponent) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
+        <div className="container max-w-4xl mx-auto px-4">
+          <Link
+            to="/categoria/matematicas"
+            className="inline-flex items-center text-primary hover:underline mb-8"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Volver a calculadoras matemáticas
+          </Link>
+
+          <div className="mb-8 text-center">
+            <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+              {calculator.title}
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {calculator.description}
+            </p>
+          </div>
+
+          <CalculatorComponent />
         </div>
       </div>
     );

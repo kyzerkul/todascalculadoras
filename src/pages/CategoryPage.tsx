@@ -57,7 +57,23 @@ const categoryCalculators = {
       description: "Resuelve sistemas de ecuaciones lineales y ecuaciones algebraicas.",
     },
   ],
-  "salud": [],
+  "salud": [
+    {
+      id: "calculadora-imc",
+      title: "Calculadora de IMC",
+      description: "Calcula tu Índice de Masa Corporal basado en tu peso y altura.",
+    },
+    {
+      id: "calculadora-calorias",
+      title: "Calculadora de Calorías y Dieta",
+      description: "Calcula tus necesidades calóricas diarias y planifica tu dieta.",
+    },
+    {
+      id: "calculadora-metabolismo",
+      title: "Calculadora de Metabolismo Basal",
+      description: "Calcula tu tasa metabólica basal (TMB) y gasto energético diario.",
+    },
+  ],
   "fechas": [],
   "estadisticas": [],
   "programacion-y-tecnologia": [],

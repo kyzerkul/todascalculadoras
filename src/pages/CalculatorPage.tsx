@@ -34,12 +34,18 @@ const CalculatorPage = () => {
 
   const isScienceCalculator = calculatorId?.includes("trigonometrica") || calculatorId?.includes("logaritmos") || calculatorId?.includes("ecuaciones");
   const isConversionCalculator = calculatorId?.includes("conversor");
-  let category = isScienceCalculator ? "científicas" : "matemáticas";
+  const isHealthCalculator = calculatorId?.includes("imc") || calculatorId?.includes("calorias") || calculatorId?.includes("metabolismo");
+  
+  let category: "financieras" | "matemáticas" | "científicas" | "conversiones" | "salud" = "matemáticas";
   
   if (calculatorId?.includes("prestamo") || calculatorId?.includes("plazo")) {
     category = "financieras";
   } else if (isConversionCalculator) {
     category = "conversiones";
+  } else if (isScienceCalculator) {
+    category = "científicas";
+  } else if (isHealthCalculator) {
+    category = "salud";
   }
 
   return (
@@ -62,3 +68,4 @@ const CalculatorPage = () => {
 };
 
 export default CalculatorPage;
+

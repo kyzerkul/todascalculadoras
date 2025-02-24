@@ -213,4 +213,94 @@ export const calculators: Calculators = {
       },
     ],
   },
+  "calculadora-imc": {
+    title: "Calculadora de IMC",
+    description: "Calcula tu Índice de Masa Corporal",
+    inputs: [
+      {
+        id: "weight",
+        label: "Peso",
+        type: "number",
+        suffix: "kg",
+        helper: "Ingresa tu peso en kilogramos",
+      },
+      {
+        id: "height",
+        label: "Altura",
+        type: "number",
+        suffix: "cm",
+        helper: "Ingresa tu altura en centímetros",
+      },
+    ],
+  },
+  "calculadora-calorias": {
+    title: "Calculadora de Calorías y Dieta",
+    description: "Calcula tus necesidades calóricas diarias",
+    inputs: [
+      {
+        id: "age",
+        label: "Edad",
+        type: "number",
+        helper: "Ingresa tu edad",
+      },
+      {
+        id: "gender",
+        label: "Género",
+        type: "text",
+        helper: "Selecciona tu género (Masculino/Femenino)",
+      },
+      {
+        id: "weight",
+        label: "Peso",
+        type: "number",
+        suffix: "kg",
+        helper: "Ingresa tu peso en kilogramos",
+      },
+      {
+        id: "height",
+        label: "Altura",
+        type: "number",
+        suffix: "cm",
+        helper: "Ingresa tu altura en centímetros",
+      },
+      {
+        id: "activity",
+        label: "Nivel de actividad",
+        type: "text",
+        helper: "Selecciona tu nivel de actividad física",
+      },
+    ],
+  },
+  "calculadora-metabolismo": {
+    title: "Calculadora de Metabolismo Basal",
+    description: "Calcula tu tasa metabólica basal (TMB)",
+    inputs: [
+      {
+        id: "age",
+        label: "Edad",
+        type: "number",
+        helper: "Ingresa tu edad",
+      },
+      {
+        id: "gender",
+        label: "Género",
+        type: "text",
+        helper: "Selecciona tu género (Masculino/Femenino)",
+      },
+      {
+        id: "weight",
+        label: "Peso",
+        type: "number",
+        suffix: "kg",
+        helper: "Ingresa tu peso en kilogramos",
+      },
+      {
+        id: "height",
+        label: "Altura",
+        type: "number",
+        suffix: "cm",
+        helper: "Ingresa tu altura en centímetros",
+      },
+    ],
+  },
 };

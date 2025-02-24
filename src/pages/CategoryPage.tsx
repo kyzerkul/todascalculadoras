@@ -1,7 +1,9 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { categories } from "@/components/CategoryGrid";
 
 const categoryCalculators = {
@@ -22,7 +24,7 @@ const categoryCalculators = {
       description: "Calcula en cuántos años se duplicará tu inversión.",
     },
   ],
-  "matematicas": [
+  "matemáticas": [
     {
       id: "calculadora-basica",
       title: "Calculadora Básica",

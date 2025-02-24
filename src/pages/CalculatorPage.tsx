@@ -33,7 +33,14 @@ const CalculatorPage = () => {
   }
 
   const isScienceCalculator = calculatorId?.includes("trigonometrica") || calculatorId?.includes("logaritmos") || calculatorId?.includes("ecuaciones");
-  const category = isScienceCalculator ? "científicas" : calculatorId?.includes("prestamo") || calculatorId?.includes("plazo") ? "financieras" : "matemáticas";
+  const isConversionCalculator = calculatorId?.includes("conversor");
+  let category = isScienceCalculator ? "científicas" : "matemáticas";
+  
+  if (calculatorId?.includes("prestamo") || calculatorId?.includes("plazo")) {
+    category = "financieras";
+  } else if (isConversionCalculator) {
+    category = "conversiones";
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">

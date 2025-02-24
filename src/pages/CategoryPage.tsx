@@ -61,7 +61,23 @@ const categoryCalculators = {
   "fechas": [],
   "estadisticas": [],
   "programacion-y-tecnologia": [],
-  "conversiones": [],
+  "conversiones": [
+    {
+      id: "conversor-unidades",
+      title: "Conversor de Unidades",
+      description: "Convierte entre diferentes unidades de medida: longitud, peso, volumen y más.",
+    },
+    {
+      id: "conversor-divisas",
+      title: "Conversor de Divisas",
+      description: "Convierte entre diferentes monedas usando tasas de cambio actualizadas.",
+    },
+    {
+      id: "conversor-temperatura",
+      title: "Conversor de Temperatura",
+      description: "Convierte entre Celsius, Fahrenheit y Kelvin.",
+    },
+  ],
   "otras-calculadoras": [],
 };
 

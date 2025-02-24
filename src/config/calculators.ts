@@ -135,4 +135,82 @@ export const calculators: Calculators = {
       },
     ],
   },
+  "conversor-unidades": {
+    title: "Conversor de Unidades",
+    description: "Convierte entre diferentes unidades de medida",
+    inputs: [
+      {
+        id: "value",
+        label: "Valor",
+        type: "number",
+        helper: "Ingresa el valor a convertir",
+      },
+      {
+        id: "fromUnit",
+        label: "De",
+        type: "text",
+        helper: "Selecciona la unidad de origen",
+      },
+      {
+        id: "toUnit",
+        label: "A",
+        type: "text",
+        helper: "Selecciona la unidad de destino",
+      },
+      {
+        id: "category",
+        label: "Categoría",
+        type: "text",
+        helper: "Selecciona el tipo de unidad (longitud, peso, etc.)",
+      },
+    ],
+  },
+  "conversor-divisas": {
+    title: "Conversor de Divisas",
+    description: "Convierte entre diferentes monedas",
+    inputs: [
+      {
+        id: "amount",
+        label: "Cantidad",
+        type: "number",
+        helper: "Ingresa la cantidad a convertir",
+      },
+      {
+        id: "fromCurrency",
+        label: "De",
+        type: "text",
+        helper: "Selecciona la moneda de origen",
+      },
+      {
+        id: "toCurrency",
+        label: "A",
+        type: "text",
+        helper: "Selecciona la moneda de destino",
+      },
+    ],
+  },
+  "conversor-temperatura": {
+    title: "Conversor de Temperatura",
+    description: "Convierte entre Celsius, Fahrenheit y Kelvin",
+    inputs: [
+      {
+        id: "temperature",
+        label: "Temperatura",
+        type: "number",
+        helper: "Ingresa la temperatura a convertir",
+      },
+      {
+        id: "fromScale",
+        label: "De",
+        type: "text",
+        helper: "Selecciona la escala de origen (Celsius, Fahrenheit, Kelvin)",
+      },
+      {
+        id: "toScale",
+        label: "A",
+        type: "text",
+        helper: "Selecciona la escala de destino",
+      },
+    ],
+  },
 };

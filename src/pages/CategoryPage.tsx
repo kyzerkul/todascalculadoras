@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
@@ -41,7 +40,23 @@ const categoryCalculators = {
       description: "Resuelve ecuaciones algebraicas y sistemas de ecuaciones.",
     },
   ],
-  "cientificas": [],
+  "científicas": [
+    {
+      id: "calculadora-trigonometrica",
+      title: "Calculadora de Funciones Trigonométricas",
+      description: "Calcula seno, coseno, tangente y sus funciones inversas en grados o radianes.",
+    },
+    {
+      id: "calculadora-logaritmos",
+      title: "Calculadora de Logaritmos y Exponentes",
+      description: "Resuelve operaciones con logaritmos naturales, base 10 y exponentes.",
+    },
+    {
+      id: "calculadora-ecuaciones",
+      title: "Calculadora de Ecuaciones y Sistemas",
+      description: "Resuelve sistemas de ecuaciones lineales y ecuaciones algebraicas.",
+    },
+  ],
   "salud": [],
   "fechas": [],
   "estadisticas": [],

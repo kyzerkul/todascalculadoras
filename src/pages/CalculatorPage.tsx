@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { calculators } from "@/config/calculators";
 import { isInputBasedCalculator } from "@/types/calculator";
 import CalculatorHeader from "@/components/calculator/CalculatorHeader";
@@ -32,8 +32,8 @@ const CalculatorPage = () => {
     );
   }
 
-  const isFinancialCalculator = calculatorId?.includes("prestamo") || calculatorId?.includes("plazo");
-  const category = isFinancialCalculator ? "financieras" : "matematicas";
+  const isScienceCalculator = calculatorId?.includes("trigonometrica") || calculatorId?.includes("logaritmos") || calculatorId?.includes("ecuaciones");
+  const category = isScienceCalculator ? "científicas" : calculatorId?.includes("prestamo") || calculatorId?.includes("plazo") ? "financieras" : "matemáticas";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">

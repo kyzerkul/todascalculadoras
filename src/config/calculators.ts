@@ -1,4 +1,3 @@
-
 import { Calculators } from "@/types/calculator";
 
 export const calculators: Calculators = {
@@ -81,5 +80,59 @@ export const calculators: Calculators = {
     title: "Calculadora de Álgebra",
     description: "Resuelve ecuaciones algebraicas",
     component: () => import("@/components/calculators/AlgebraCalculator").then(mod => mod.default),
+  },
+  "calculadora-trigonometrica": {
+    title: "Calculadora de Funciones Trigonométricas",
+    description: "Calcula seno, coseno, tangente y sus funciones inversas en grados o radianes",
+    inputs: [
+      {
+        id: "angle",
+        label: "Ángulo",
+        type: "number",
+        helper: "Ingresa el ángulo",
+      },
+      {
+        id: "unit",
+        label: "Unidad",
+        type: "text",
+        helper: "Selecciona grados o radianes",
+      },
+    ],
+  },
+  "calculadora-logaritmos": {
+    title: "Calculadora de Logaritmos y Exponentes",
+    description: "Resuelve operaciones con logaritmos naturales, base 10 y exponentes",
+    inputs: [
+      {
+        id: "number",
+        label: "Número",
+        type: "number",
+        helper: "Ingresa el número",
+      },
+      {
+        id: "base",
+        label: "Base (para logaritmos)",
+        type: "number",
+        helper: "Ingresa la base del logaritmo (10 para log, e para ln)",
+      },
+    ],
+  },
+  "calculadora-ecuaciones": {
+    title: "Calculadora de Ecuaciones y Sistemas",
+    description: "Resuelve sistemas de ecuaciones lineales y ecuaciones algebraicas",
+    inputs: [
+      {
+        id: "equation1",
+        label: "Ecuación 1",
+        type: "text",
+        helper: "Ingresa la primera ecuación (ejemplo: 2x + 3y = 8)",
+      },
+      {
+        id: "equation2",
+        label: "Ecuación 2",
+        type: "text",
+        helper: "Ingresa la segunda ecuación (ejemplo: 4x - y = 1)",
+      },
+    ],
   },
 };

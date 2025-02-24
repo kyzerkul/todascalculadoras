@@ -36,14 +36,14 @@ const CalculatorPage = () => {
   const isConversionCalculator = calculatorId?.includes("conversor");
   const isHealthCalculator = calculatorId?.includes("imc") || calculatorId?.includes("calorias") || calculatorId?.includes("metabolismo");
   
-  let category: "financieras" | "matemáticas" | "científicas" | "conversiones" | "salud" = "matemáticas";
+  let category = "matematicas";
   
   if (calculatorId?.includes("prestamo") || calculatorId?.includes("plazo")) {
     category = "financieras";
   } else if (isConversionCalculator) {
     category = "conversiones";
   } else if (isScienceCalculator) {
-    category = "científicas";
+    category = "cientificas";
   } else if (isHealthCalculator) {
     category = "salud";
   }

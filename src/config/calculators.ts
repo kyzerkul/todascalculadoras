@@ -137,7 +137,7 @@ export const calculators: Calculators = {
   },
   "conversor-unidades": {
     title: "Conversor de Unidades",
-    description: "Convierte entre diferentes unidades de medida",
+    description: "Convierte entre diferentes unidades de medida como longitud, peso, volumen y más",
     inputs: [
       {
         id: "value",
@@ -147,45 +147,45 @@ export const calculators: Calculators = {
       },
       {
         id: "fromUnit",
-        label: "De",
+        label: "Unidad de origen",
         type: "text",
         helper: "Selecciona la unidad de origen",
       },
       {
         id: "toUnit",
-        label: "A",
+        label: "Unidad de destino",
         type: "text",
         helper: "Selecciona la unidad de destino",
-      },
-      {
-        id: "category",
-        label: "Categoría",
-        type: "text",
-        helper: "Selecciona el tipo de unidad (longitud, peso, etc.)",
       },
     ],
   },
   "conversor-divisas": {
     title: "Conversor de Divisas",
-    description: "Convierte entre diferentes monedas",
+    description: "Convierte entre diferentes monedas usando tasas de cambio",
     inputs: [
       {
         id: "amount",
-        label: "Cantidad",
+        label: "Monto",
         type: "number",
-        helper: "Ingresa la cantidad a convertir",
+        helper: "Ingresa el monto a convertir",
       },
       {
         id: "fromCurrency",
-        label: "De",
+        label: "Moneda de origen",
         type: "text",
         helper: "Selecciona la moneda de origen",
       },
       {
         id: "toCurrency",
-        label: "A",
+        label: "Moneda de destino",
         type: "text",
         helper: "Selecciona la moneda de destino",
+      },
+      {
+        id: "rate",
+        label: "Tasa de cambio",
+        type: "number",
+        helper: "Ingresa la tasa de cambio actual",
       },
     ],
   },
@@ -201,15 +201,69 @@ export const calculators: Calculators = {
       },
       {
         id: "fromScale",
-        label: "De",
+        label: "Escala de origen",
         type: "text",
         helper: "Selecciona la escala de origen (Celsius, Fahrenheit, Kelvin)",
       },
       {
         id: "toScale",
-        label: "A",
+        label: "Escala de destino",
         type: "text",
         helper: "Selecciona la escala de destino",
+      },
+    ],
+  },
+  "conversor-tiempo": {
+    title: "Conversor de Tiempo",
+    description: "Convierte entre diferentes unidades de tiempo",
+    inputs: [
+      {
+        id: "value",
+        label: "Valor",
+        type: "number",
+        helper: "Ingresa el valor a convertir",
+      },
+      {
+        id: "fromUnit",
+        label: "Unidad de origen",
+        type: "text",
+        helper: "Selecciona la unidad de origen (horas, minutos, segundos)",
+      },
+      {
+        id: "toUnit",
+        label: "Unidad de destino",
+        type: "text",
+        helper: "Selecciona la unidad de destino",
+      },
+    ],
+  },
+  "conversor-medidas-especiales": {
+    title: "Conversor de Medidas Especiales",
+    description: "Convierte entre unidades de potencia, presión, energía y más",
+    inputs: [
+      {
+        id: "value",
+        label: "Valor",
+        type: "number",
+        helper: "Ingresa el valor a convertir",
+      },
+      {
+        id: "measureType",
+        label: "Tipo de medida",
+        type: "text",
+        helper: "Selecciona el tipo de medida (potencia, presión, energía)",
+      },
+      {
+        id: "fromUnit",
+        label: "Unidad de origen",
+        type: "text",
+        helper: "Selecciona la unidad de origen",
+      },
+      {
+        id: "toUnit",
+        label: "Unidad de destino",
+        type: "text",
+        helper: "Selecciona la unidad de destino",
       },
     ],
   },

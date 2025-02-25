@@ -35,25 +35,33 @@ const InputBasedCalculator = ({ calculator, calculatorId }: Props) => {
     switch (calculatorId) {
       case "prestamo-personal": {
         const amount = Number(inputs.amount);
-        const rate = Number(inputs.rate) / 100;
+        const rate = Number(inputs.rate);
         const years = Number(inputs.years);
-        const monthlyRate = rate / 12;
+        const monthlyRate = rate / 1200; // Convert annual rate to monthly decimal
         const numberOfPayments = years * 12;
-        result =
-          (amount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
-          (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+        result = (amount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+                (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+        break;
+      }
+      case "interes-compuesto": {
+        const principal = Number(inputs.principal);
+        const rate = Number(inputs.rate);
+        const periods = Number(inputs.periods);
+        const frequency = Number(inputs.frequency) || 1; // Default to annual if not specified
+        result = principal * Math.pow(1 + (rate / (100 * frequency)), frequency * periods);
         break;
       }
       case "plazo-fijo": {
         const principal = Number(inputs.principal);
-        const rate = Number(inputs.rate) / 100;
+        const rate = Number(inputs.rate);
         const days = Number(inputs.days);
-        result = principal * (1 + (rate * days) / 365);
+        // Simple interest formula for fixed-term deposits
+        result = principal * (1 + (rate * days) / (100 * 365));
         break;
       }
       case "regla-72": {
         const rate = Number(inputs.rate);
-        result = 72 / rate;
+        result = 72 / rate; // Simple rule of 72 calculation
         break;
       }
       default:
@@ -94,6 +102,8 @@ const InputBasedCalculator = ({ calculator, calculatorId }: Props) => {
               <p className="text-lg text-gray-600 mb-2">
                 {calculatorId === "prestamo-personal"
                   ? "Tu pago mensual estimado:"
+                  : calculatorId === "interes-compuesto"
+                  ? "Monto final con interés compuesto:"
                   : calculatorId === "plazo-fijo"
                   ? "Monto final de tu inversión:"
                   : "Años para duplicar tu inversión:"}
@@ -104,6 +114,7 @@ const InputBasedCalculator = ({ calculator, calculatorId }: Props) => {
                   : result.toLocaleString("es-ES", {
                       style: "currency",
                       currency: "EUR",
+                      maximumFractionDigits: 2,
                     })}
               </p>
             </div>

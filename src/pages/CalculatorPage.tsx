@@ -36,7 +36,7 @@ const CalculatorPage = () => {
   const isConversionCalculator = calculatorId?.includes("conversor");
   const isHealthCalculator = calculatorId?.includes("imc") || calculatorId?.includes("calorias") || calculatorId?.includes("metabolismo");
   
-  let category = "matematicas";
+  let category: "matematicas" | "financieras" | "cientificas" | "conversiones" | "salud" = "matematicas";
   
   if (calculatorId?.includes("prestamo") || calculatorId?.includes("plazo")) {
     category = "financieras";
@@ -68,4 +68,3 @@ const CalculatorPage = () => {
 };
 
 export default CalculatorPage;
-

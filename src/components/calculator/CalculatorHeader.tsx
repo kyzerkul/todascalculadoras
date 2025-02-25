@@ -5,10 +5,25 @@ import { ArrowLeft } from "lucide-react";
 type CalculatorHeaderProps = {
   title: string;
   description: string;
-  category: "matematicas" | "financieras";
+  category: "matematicas" | "financieras" | "cientificas" | "conversiones" | "salud";
 };
 
 const CalculatorHeader = ({ title, description, category }: CalculatorHeaderProps) => {
+  const getCategoryText = (category: CalculatorHeaderProps["category"]) => {
+    switch (category) {
+      case "matematicas":
+        return "matemáticas";
+      case "financieras":
+        return "financieras";
+      case "cientificas":
+        return "científicas";
+      case "conversiones":
+        return "conversiones";
+      case "salud":
+        return "salud";
+    }
+  };
+
   return (
     <>
       <Link
@@ -16,7 +31,7 @@ const CalculatorHeader = ({ title, description, category }: CalculatorHeaderProp
         className="inline-flex items-center text-primary hover:underline mb-8"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
-        Volver a calculadoras {category === "matematicas" ? "matemáticas" : "financieras"}
+        Volver a calculadoras {getCategoryText(category)}
       </Link>
 
       <div className="mb-8 text-center">

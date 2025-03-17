@@ -1,0 +1,26 @@
+{
+  "name": "Todas Calculadoras",
+  "short_name": "TodosCalc",
+  "icons": [
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "start_url": "https://todascalculadoras.com",
+  "display": "standalone",
+  "orientation": "portrait"
+}

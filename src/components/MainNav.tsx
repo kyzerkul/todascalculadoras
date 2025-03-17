@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import logoSvg from "@/assets/Logo.svg";
 
 const MainNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const MainNav = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-primary">TodasCalculadoras</span>
+              <img src={logoSvg} alt="Todas Calculadoras Logo" className="h-8" />
             </Link>
           </div>
 

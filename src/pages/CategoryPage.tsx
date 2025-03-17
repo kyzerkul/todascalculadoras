@@ -4,103 +4,42 @@ import { Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { categories } from "@/components/CategoryGrid";
+import { calculators } from "@/config/calculators";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
+// Mapping of calculators by category
 const categoryCalculators = {
-  "financieras": [
-    {
-      id: "prestamo-personal",
-      title: "Préstamo Personal",
-      description: "Calcula tu pago mensual basado en el monto del préstamo, tasa de interés y plazo.",
-    },
-    {
-      id: "plazo-fijo",
-      title: "Plazo Fijo",
-      description: "Calcula el interés y monto final de tu inversión a plazo fijo.",
-    },
-    {
-      id: "regla-72",
-      title: "Regla del 72",
-      description: "Calcula en cuántos años se duplicará tu inversión.",
-    },
-  ],
-  "matemáticas": [
-    {
-      id: "calculadora-basica",
-      title: "Calculadora Básica",
-      description: "Realiza operaciones matemáticas básicas: suma, resta, multiplicación y división.",
-    },
-    {
-      id: "calculadora-cientifica",
-      title: "Calculadora Científica",
-      description: "Funciones científicas avanzadas, trigonometría, logaritmos y más.",
-    },
-    {
-      id: "calculadora-algebra",
-      title: "Calculadora de Álgebra",
-      description: "Resuelve ecuaciones algebraicas y sistemas de ecuaciones.",
-    },
-  ],
-  "científicas": [
-    {
-      id: "calculadora-trigonometrica",
-      title: "Calculadora de Funciones Trigonométricas",
-      description: "Calcula seno, coseno, tangente y sus funciones inversas en grados o radianes.",
-    },
-    {
-      id: "calculadora-logaritmos",
-      title: "Calculadora de Logaritmos y Exponentes",
-      description: "Resuelve operaciones con logaritmos naturales, base 10 y exponentes.",
-    },
-    {
-      id: "calculadora-ecuaciones",
-      title: "Calculadora de Ecuaciones y Sistemas",
-      description: "Resuelve sistemas de ecuaciones lineales y ecuaciones algebraicas.",
-    },
-  ],
-  "salud": [
-    {
-      id: "calculadora-imc",
-      title: "Calculadora de IMC",
-      description: "Calcula tu Índice de Masa Corporal basado en tu peso y altura.",
-    },
-    {
-      id: "calculadora-calorias",
-      title: "Calculadora de Calorías y Dieta",
-      description: "Calcula tus necesidades calóricas diarias y planifica tu dieta.",
-    },
-    {
-      id: "calculadora-metabolismo",
-      title: "Calculadora de Metabolismo Basal",
-      description: "Calcula tu tasa metabólica basal (TMB) y gasto energético diario.",
-    },
-  ],
-  "fechas": [],
-  "estadisticas": [],
-  "programacion-y-tecnologia": [],
-  "conversiones": [
-    {
-      id: "conversor-unidades",
-      title: "Conversor de Unidades",
-      description: "Convierte entre diferentes unidades de medida: longitud, peso, volumen y más.",
-    },
-    {
-      id: "conversor-divisas",
-      title: "Conversor de Divisas",
-      description: "Convierte entre diferentes monedas usando tasas de cambio actualizadas.",
-    },
-    {
-      id: "conversor-temperatura",
-      title: "Conversor de Temperatura",
-      description: "Convierte entre Celsius, Fahrenheit y Kelvin.",
-    },
-  ],
-  "otras-calculadoras": [],
+  matematicas: Object.keys(calculators)
+    .filter(id => calculators[id].category === "matematicas")
+    .map(id => ({ id, ...calculators[id] })),
+  financieras: Object.keys(calculators)
+    .filter(id => calculators[id].category === "financieras")
+    .map(id => ({ id, ...calculators[id] })),
+  cientificas: Object.keys(calculators)
+    .filter(id => calculators[id].category === "cientificas")
+    .map(id => ({ id, ...calculators[id] })),
+  conversiones: Object.keys(calculators)
+    .filter(id => calculators[id].category === "conversiones")
+    .map(id => ({ id, ...calculators[id] })),
+  simuladores: Object.keys(calculators)
+    .filter(id => calculators[id].category === "simuladores")
+    .map(id => ({ id, ...calculators[id] })),
+  salud: Object.keys(calculators)
+    .filter(id => calculators[id].category === "salud")
+    .map(id => ({ id, ...calculators[id] })),
+  fechas: Object.keys(calculators)
+    .filter(id => calculators[id].category === "fechas")
+    .map(id => ({ id, ...calculators[id] })),
+  ingenieria: Object.keys(calculators)
+    .filter(id => calculators[id].category === "ingenieria")
+    .map(id => ({ id, ...calculators[id] })),
 };
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
   const category = categories.find(
-    (cat) => cat.title.toLowerCase().replace(/\s+/g, "-") === categoryId
+    (cat) => cat.title.toLowerCase().replace(/\s+/g, "-") === categoryId?.toLowerCase()
   );
 
   if (!category) {
@@ -116,11 +55,65 @@ const CategoryPage = () => {
     );
   }
 
-  const calculators = categoryCalculators[categoryId as keyof typeof categoryCalculators] || [];
+  // Fix para cualquier variación del URL de "ingenieria" 
+  let categoryCalcs;
+  if (categoryId?.toLowerCase().includes("ingenier")) {
+    // Si la categoría es ingeniería (con o sin acento), usar la clave "ingenieria"
+    categoryCalcs = categoryCalculators["ingenieria"] || [];
+  } else {
+    // Para otras categorías, usar el ID normal
+    categoryCalcs = categoryCalculators[categoryId as keyof typeof categoryCalculators] || [];
+  }
+
+  // Debug logs  
+  console.log("CategoryID:", categoryId);
+  console.log("Category found:", category);
+  console.log("Calculators found:", categoryCalcs);
+  console.log("Available categories:", Object.keys(categoryCalculators));
+  
+  // Log ingenieria calculators specifically using imported calculators 
+  const ingenieriaCalcs = Object.keys(calculators)
+    .filter(id => calculators[id].category === "ingenieria")
+    .map(id => ({ id, ...calculators[id] }));
+  console.log("Ingenieria calculators (direct):", ingenieriaCalcs);
+
+  // Création des données structurées pour la page de catégorie (Schema.org)
+  const categorySchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `Calculadoras ${category.title}`,
+    "description": category.description,
+    "url": `https://calculadorahub.com/categoria/${categoryId}`,
+    "hasPart": categoryCalcs.map(calc => ({
+      "@type": "SoftwareApplication",
+      "name": calc.title,
+      "description": calc.description,
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "Web",
+      "url": `https://calculadorahub.com/calculadora/${calc.id}`
+    }))
+  };
+
+  // Optimisation du titre SEO pour la page de catégorie
+  const seoTitle = `Calculadoras ${category.title} - Herramientas de Cálculo Online`;
+  
+  // Optimisation de la description SEO pour la page de catégorie
+  const seoDescription = `Explora nuestras calculadoras ${category.title.toLowerCase()} online gratuitas. ${category.description} Las mejores herramientas de cálculo.`;
+  
+  // URL canonique pour la page de catégorie
+  const canonicalUrl = `/categoria/${categoryId}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        canonical={canonicalUrl}
+        schema={categorySchema}
+      />
       <div className="container max-w-6xl mx-auto px-4">
+        <Breadcrumbs />
+        
         {/* Category Header */}
         <div className="mb-12 text-center animate-fade-down">
           <div className="flex justify-center mb-4">{category.icon}</div>
@@ -132,8 +125,8 @@ const CategoryPage = () => {
 
         {/* Calculator Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-up">
-          {calculators.length > 0 ? (
-            calculators.map((calc) => (
+          {categoryCalcs.length > 0 ? (
+            categoryCalcs.map((calc) => (
               <Card
                 key={calc.id}
                 className="hover:shadow-lg transition-shadow duration-300"
@@ -142,7 +135,7 @@ const CategoryPage = () => {
                   <h3 className="font-semibold text-lg mb-2">{calc.title}</h3>
                   <p className="text-sm text-gray-600 mb-4">{calc.description}</p>
                   <Button className="w-full" asChild>
-                    <Link to={`/calculadora/${calc.id}`}>Usar Calculadora</Link>
+                    <Link to={`/${categoryId}/${calc.id}`}>Usar Calculadora</Link>
                   </Button>
                 </CardContent>
               </Card>

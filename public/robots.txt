@@ -1,0 +1,35 @@
+# Todas Calculadoras - Fichier Robots.txt
+# Dernière mise à jour: 2025-03-17
+
+# Instructions pour tous les robots
+User-agent: *
+Allow: /
+
+# Spécifique pour Google
+User-agent: Googlebot
+Allow: /
+
+# Spécifique pour Bing
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://todascalculadoras.com/sitemap.xml
+
+# Pages d'admin ou de développement à ne pas indexer
+Disallow: /admin/
+Disallow: /dev/
+Disallow: /test/
+
+# Fichiers et dossiers système à ne pas indexer
+Disallow: /assets/
+Disallow: *.json$
+Disallow: *.js.map$
+Disallow: *.css.map$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /.env
+
+# Crawl-delay pour éviter la surcharge du serveur
+Crawl-delay: 10

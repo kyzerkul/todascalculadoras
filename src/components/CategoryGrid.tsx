@@ -1,5 +1,4 @@
-
-import { Calculator, PlusSquare, BarChart2, Heart, Calendar, BarChart, Code2, ArrowLeftRight, CircleDot } from "lucide-react";
+import { Calculator, PlusSquare, BarChart2, Heart, Calendar, BarChart, Code2, ArrowLeftRight, CircleDot, Monitor } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 
 export const categories = [
@@ -42,6 +41,16 @@ export const categories = [
     title: "Conversiones",
     description: "Unidades, monedas, medidas",
     icon: <ArrowLeftRight className="w-8 h-8" />,
+  },
+  {
+    title: "Simuladores",
+    description: "Simuladores especializados",
+    icon: <Monitor className="w-8 h-8" />,
+  },
+  {
+    title: "Ingenieria",
+    description: "Calculadoras para problemas de ingeniería",
+    icon: <Calculator className="w-8 h-8" />,
   },
   {
     title: "Otras Calculadoras",

@@ -1,11 +1,10 @@
-
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 type CalculatorHeaderProps = {
   title: string;
   description: string;
-  category: "matematicas" | "financieras" | "cientificas" | "conversiones" | "salud";
+  category: "matematicas" | "financieras" | "cientificas" | "conversiones" | "salud" | "simuladores" | "fechas" | "ingenieria";
 };
 
 const CalculatorHeader = ({ title, description, category }: CalculatorHeaderProps) => {
@@ -21,13 +20,30 @@ const CalculatorHeader = ({ title, description, category }: CalculatorHeaderProp
         return "conversiones";
       case "salud":
         return "salud";
+      case "simuladores":
+        return "simuladores";
+      case "fechas":
+        return "fechas";
+      case "ingenieria":
+        return "ingeniería";
+    }
+  };
+
+  const getCategoryUrlPath = (category: CalculatorHeaderProps["category"]) => {
+    switch (category) {
+      case "matematicas":
+        return "matemáticas";
+      case "cientificas":
+        return "científicas";
+      default:
+        return category;
     }
   };
 
   return (
     <>
       <Link
-        to={`/categoria/${category}`}
+        to={`/categoria/${getCategoryUrlPath(category)}`}
         className="inline-flex items-center text-primary hover:underline mb-8"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />

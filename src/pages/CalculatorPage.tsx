@@ -7,6 +7,16 @@ import InputBasedCalculator from "@/components/calculator/InputBasedCalculator";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+// Fonction d'aide pour normaliser les chaînes (enlever accents, espaces, etc.)
+const normalizeString = (str: string) => {
+  if (!str) return "";
+  return str
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+};
+
 const CalculatorPage = () => {
   const { calculatorId, categoryId } = useParams();
   const calculator = calculators[calculatorId as keyof typeof calculators];
@@ -43,21 +53,28 @@ const CalculatorPage = () => {
   let category: "matematicas" | "financieras" | "cientificas" | "conversiones" | "salud" | "simuladores" | "fechas" | "ingenieria";
   
   if (categoryId) {
+    // Normalize the category ID to handle accents and special characters
+    const normalizedCategoryId = normalizeString(categoryId);
+    
     // Convert categoryId to our category type format (handle special cases)
-    if (categoryId === "conversiones") {
+    if (normalizedCategoryId === "conversiones") {
       category = "conversiones";
-    } else if (categoryId === "financieras") {
+    } else if (normalizedCategoryId === "financieras") {
       category = "financieras";
-    } else if (categoryId === "cientificas" || categoryId === "científicas") {
+    } else if (normalizedCategoryId === "cientificas") {
       category = "cientificas";
-    } else if (categoryId === "salud") {
+    } else if (normalizedCategoryId === "salud") {
       category = "salud"; 
-    } else if (categoryId === "simuladores") {
+    } else if (normalizedCategoryId === "simuladores") {
       category = "simuladores";
-    } else if (categoryId === "fechas") {
+    } else if (normalizedCategoryId === "fechas") {
       category = "fechas";
-    } else if (categoryId === "ingenieria") {
+    } else if (normalizedCategoryId === "ingenieria") {
       category = "ingenieria";
+    } else if (normalizedCategoryId === "estadisticas") {
+      category = "matematicas" as "matematicas"; // Les calculatrices statistiques sont dans la catégorie mathématiques
+    } else if (normalizedCategoryId === "programacion-y-tecnologia") {
+      category = "simuladores" as "simuladores"; // Utiliser simuladores pour programación y tecnología
     } else {
       category = "matematicas";
     }
@@ -68,6 +85,7 @@ const CalculatorPage = () => {
     const isHealthCalculator = calculatorId?.includes("imc") || calculatorId?.includes("calorias") || calculatorId?.includes("metabolismo");
     const isFinancialCalculator = calculatorId?.includes("hipoteca") || calculatorId?.includes("prestamo") || calculatorId?.includes("interes");
     const isDateCalculator = calculatorId?.includes("fecha") || calculatorId?.includes("time") || calculatorId?.includes("date") || calculatorId?.includes("epoch");
+    const isEngineeringCalculator = calculatorId?.includes("resistencia") || calculatorId?.includes("ohm") || calculatorId?.includes("energia") || calculatorId?.includes("tension");
     
     if (isConversionCalculator) {
       category = "conversiones";
@@ -79,6 +97,8 @@ const CalculatorPage = () => {
       category = "financieras";
     } else if (isDateCalculator) {
       category = "fechas";
+    } else if (isEngineeringCalculator) {
+      category = "ingenieria";
     } else {
       category = "matematicas";
     }
@@ -99,54 +119,55 @@ const CalculatorPage = () => {
     return categories[cat] || 'Matemáticas';
   };
 
+  // Normaliser l'ID de catégorie pour les liens dans la page
+  const normalizedCategoryId = categoryId ? normalizeString(categoryId) : normalizeString(getCategoryName(category));
+
+  // Structured Data for Calculator Page
   const calculatorSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": calculator.title,
-    "description": calculator.description,
     "applicationCategory": "CalculatorApplication",
-    "applicationSubCategory": getCategoryName(category),
     "operatingSystem": "Web",
+    "description": calculator.description,
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "EUR"
-    }
+    },
+    "url": `https://todascalculadoras.com/${normalizedCategoryId}/${calculatorId}`
   };
-
-  // Titre SEO optimisé pour chaque calculatrice
-  const seoTitle = `${calculator.title} | Calculadora Online Gratis`;
-
-  // Description SEO optimisée pour chaque calculatrice
-  const seoDescription = `Utiliza nuestra calculadora de ${calculator.title.toLowerCase()} online gratuita. ${calculator.description} Herramienta rápida y precisa.`;
-
-  // URL canonique pour la page de calculatrice
-  const canonicalUrl = `/calculadora/${calculatorId}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
       <SEO
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        type="product"
+        title={`${calculator.title} | TodasCalculadoras`}
+        description={calculator.description}
+        canonical={`/${normalizedCategoryId}/${calculatorId}`}
         schema={calculatorSchema}
       />
-      
       <div className="container max-w-4xl mx-auto px-4">
         <Breadcrumbs />
-        
+
         <CalculatorHeader
           title={calculator.title}
           description={calculator.description}
-          category={category}
+          category={getCategoryName(category)}
         />
 
-        {isInputBasedCalculator(calculator) ? (
-          <InputBasedCalculator calculator={calculator} calculatorId={calculatorId!} />
-        ) : CalculatorComponent ? (
-          <CalculatorComponent />
-        ) : null}
+        <div className="mt-8 p-5 bg-white rounded-xl shadow-sm">
+          {isInputBasedCalculator(calculator) ? (
+            <InputBasedCalculator calculator={calculator} calculatorId={calculatorId as string} />
+          ) : CalculatorComponent ? (
+            <CalculatorComponent />
+          ) : (
+            <div className="flex justify-center py-10">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+            </div>
+          )}
+        </div>
+
+        {/* Related calculators - TBD */}
       </div>
     </div>
   );

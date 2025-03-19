@@ -8,6 +8,15 @@ import { calculators } from "@/config/calculators";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+// Fonction d'aide pour normaliser les chaînes (enlever accents, espaces, etc.)
+const normalizeString = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+};
+
 // Mapping of calculators by category
 const categoryCalculators = {
   matematicas: Object.keys(calculators)
@@ -46,15 +55,27 @@ const categoryCalculators = {
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
-  const category = categories.find(
-    (cat) => cat.title.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "") === categoryId?.toLowerCase()
-  );
+  
+  // Essayer de trouver la catégorie avec ou sans accents
+  const category = categories.find(cat => {
+    // Normaliser le titre de la catégorie
+    const normalizedCategoryTitle = normalizeString(cat.title);
+    
+    // Normaliser l'ID de URL si présent
+    const normalizedCategoryId = categoryId ? normalizeString(categoryId) : "";
+    
+    // Comparer les deux chaînes normalisées
+    return normalizedCategoryTitle === normalizedCategoryId;
+  });
 
   if (!category) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Categoría no encontrada</h1>
+          <p className="mb-4">
+            La categoría "{categoryId}" no se encuentra disponible.
+          </p>
           <Link to="/" className="text-primary hover:underline">
             Volver al inicio
           </Link>
@@ -63,21 +84,24 @@ const CategoryPage = () => {
     );
   }
 
+  // Obtenir l'ID de catégorie normalisé pour la recherche de calculatrices
+  const normalizedCategoryTitle = normalizeString(category.title);
+  
   // Fix para cualquier variación del URL de categorías especiales
   let categoryCalcs;
-  let categoryKey = categoryId?.toLowerCase();
   
-  if (categoryKey?.includes("ingenier")) {
+  // Simplifier la logique en utilisant le titre normalisé
+  if (normalizedCategoryTitle === "ingenieria") {
     categoryCalcs = categoryCalculators["ingenieria"] || [];
-  } else if (categoryKey?.includes("estad")) {
+  } else if (normalizedCategoryTitle === "estadisticas") {
     categoryCalcs = categoryCalculators["estadisticas"] || [];
-  } else if (categoryKey?.includes("program") || categoryKey?.includes("tecnolog")) {
+  } else if (normalizedCategoryTitle === "programacion-y-tecnologia") {
     categoryCalcs = categoryCalculators["programacion-y-tecnologia"] || [];
-  } else if (categoryKey?.includes("cient")) {
+  } else if (normalizedCategoryTitle === "cientificas") {
     categoryCalcs = categoryCalculators["cientificas"] || [];
   } else {
-    // Para otras categorías, usar el ID normal
-    categoryCalcs = categoryCalculators[categoryId as keyof typeof categoryCalculators] || [];
+    // Pour les autres catégories, utiliser directement le titre normalisé
+    categoryCalcs = categoryCalculators[normalizedCategoryTitle as keyof typeof categoryCalculators] || [];
   }
 
   // Si todavía no hay calculadoras, asegurémonos de mostrar al menos calculadoras relacionadas
@@ -101,7 +125,7 @@ const CategoryPage = () => {
       "description": calc.description,
       "applicationCategory": "CalculatorApplication",
       "operatingSystem": "Web",
-      "url": `https://todascalculadoras.com/calculadora/${calc.id}`
+      "url": `https://todascalculadoras.com/${normalizedCategoryTitle}/${calc.id}`
     }))
   };
 
@@ -145,7 +169,7 @@ const CategoryPage = () => {
                 <h3 className="font-semibold text-lg mb-2">{calc.title}</h3>
                 <p className="text-sm text-gray-600 mb-4">{calc.description}</p>
                 <Button className="w-full" asChild>
-                  <Link to={`/calculadora/${calc.id}`}>Usar Calculadora</Link>
+                  <Link to={`/${normalizedCategoryTitle}/${calc.id}`}>Usar Calculadora</Link>
                 </Button>
               </CardContent>
             </Card>

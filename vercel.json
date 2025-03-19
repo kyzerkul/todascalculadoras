@@ -8,6 +8,16 @@
     { "source": "/faq", "destination": "/index.html" },
     { "source": "/legal", "destination": "/index.html" },
     { "source": "/calculadoras", "destination": "/index.html" },
+    { "source": "/matematicas/:path*", "destination": "/index.html" },
+    { "source": "/financieras/:path*", "destination": "/index.html" },
+    { "source": "/cientificas/:path*", "destination": "/index.html" },
+    { "source": "/conversiones/:path*", "destination": "/index.html" },
+    { "source": "/salud/:path*", "destination": "/index.html" },
+    { "source": "/simuladores/:path*", "destination": "/index.html" },
+    { "source": "/fechas/:path*", "destination": "/index.html" },
+    { "source": "/ingenieria/:path*", "destination": "/index.html" },
+    { "source": "/estadisticas/:path*", "destination": "/index.html" },
+    { "source": "/programacion-y-tecnologia/:path*", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

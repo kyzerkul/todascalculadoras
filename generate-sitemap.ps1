@@ -49,11 +49,35 @@ foreach ($cat in $categories) {
     $xml += Add-SitemapUrl -url "$baseUrl/categoria/$cat" -priority "0.8"
 }
 
-# Pages de calculatrices (recherche dans le répertoire public/calculadora)
-$calculatorDirs = Get-ChildItem -Path "public\calculadora" -Directory
-foreach ($dir in $calculatorDirs) {
-    $calculatorId = $dir.Name
-    $xml += Add-SitemapUrl -url "$baseUrl/calculadora/$calculatorId" -priority "0.8"
+# Structure des calculatrices par catégorie (nouvelle structure d'URL)
+$categoryCalculators = @{
+    "matematicas" = @("calculadora-fracciones", "calculadora-algebra", "calculadora-porcentajes", "calculadora-ecuaciones-cuadraticas", "calculadora-logaritmos-mat")
+    "financieras" = @("hipoteca", "prestamo-personal", "interes-compuesto", "calculadora-roi", "calculadora-prestamo")
+    "cientificas" = @("calculadora-cientifica", "calculadora-ecuaciones", "calculadora-logaritmos")
+    "conversiones" = @("conversor-unidades", "conversor-monedas", "conversor-tiempo", "conversion-energia")
+    "salud" = @("calculadora-imc", "calculadora-calorias", "calculadora-metabolismo", "calculadora-grasa-corporal")
+    "simuladores" = @("casio-fx-82ms", "hp-300s-plus", "calculadora-trigonometrica")
+    "fechas" = @("calculadora-fecha", "time-calculator", "date-wheel", "epoch-converter")
+    "ingenieria" = @("resistencia-materiales", "ley-ohm", "caida-tension")
+    "estadisticas" = @("calculadora-estadistica", "calculadora-probabilidad")
+    "programacion-y-tecnologia" = @("conversor-unidades", "calculadora-cientifica")
+}
+
+# Ajouter les nouveaux liens de calculatrices (format catégorie/calculatrice)
+foreach ($category in $categoryCalculators.Keys) {
+    foreach ($calculator in $categoryCalculators[$category]) {
+        $xml += Add-SitemapUrl -url "$baseUrl/$category/$calculator" -priority "0.8"
+    }
+}
+
+# Conserver temporairement les anciens liens pour la transition (format /calculadora/nom)
+# Cela aidera les moteurs de recherche à faire la transition vers les nouvelles URLs
+if (Test-Path "public\calculadora") {
+    $calculatorDirs = Get-ChildItem -Path "public\calculadora" -Directory
+    foreach ($dir in $calculatorDirs) {
+        $calculatorId = $dir.Name
+        $xml += Add-SitemapUrl -url "$baseUrl/calculadora/$calculatorId" -priority "0.6" -changefreq "yearly"
+    }
 }
 
 # Pages de blog (recherche dans le répertoire public/blog)
@@ -71,3 +95,4 @@ $xml | Out-File -FilePath $outputFile -Encoding UTF8
 
 Write-Host "Le sitemap a été généré avec succès dans $outputFile"
 Write-Host "Total URLs: $((($xml -split "<url>").Count - 1))"
+Write-Host "Le sitemap a été mis à jour avec la nouvelle structure d'URL domaine/catégorie/calculatrice"

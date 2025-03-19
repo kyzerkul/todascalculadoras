@@ -85,100 +85,275 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>  <url>
-    <loc>https://todascalculadoras.com/calculadora/calculadora-calorias</loc>
+    <loc>https://todascalculadoras.com/conversiones/conversor-unidades</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/conversiones/conversor-monedas</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/conversiones/conversor-tiempo</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/conversiones/conversion-energia</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/programacion-y-tecnologia/conversor-unidades</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/programacion-y-tecnologia/calculadora-cientifica</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/estadisticas/calculadora-estadistica</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/estadisticas/calculadora-probabilidad</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/salud/calculadora-imc</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/salud/calculadora-calorias</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/salud/calculadora-metabolismo</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/salud/calculadora-grasa-corporal</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/financieras/hipoteca</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/financieras/prestamo-personal</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/financieras/interes-compuesto</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/financieras/calculadora-roi</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/financieras/calculadora-prestamo</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/fechas/calculadora-fecha</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/fechas/time-calculator</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/fechas/date-wheel</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/fechas/epoch-converter</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/ingenieria/resistencia-materiales</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/ingenieria/ley-ohm</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/ingenieria/caida-tension</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/cientificas/calculadora-cientifica</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/cientificas/calculadora-ecuaciones</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/cientificas/calculadora-logaritmos</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/matematicas/calculadora-fracciones</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/matematicas/calculadora-algebra</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/matematicas/calculadora-porcentajes</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/matematicas/calculadora-ecuaciones-cuadraticas</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/matematicas/calculadora-logaritmos-mat</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/simuladores/casio-fx-82ms</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/simuladores/hp-300s-plus</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/simuladores/calculadora-trigonometrica</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://todascalculadoras.com/calculadora/calculadora-calorias</loc>
+    <lastmod>2025-03-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-cientifica</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-ecuaciones</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-estadistica</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-fecha</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-fracciones</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-hipoteca</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-imc</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-interes-compuesto</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-logaritmos</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-matematica-basica</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-metabolismo-basal</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-ohm</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-porcentajes</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-prestamo</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/calculadora-resistencia-electrica</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/conversor-unidades</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/due-date-calculator</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/calculadora/simulador-inversion</loc>
     <lastmod>2025-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
     <loc>https://todascalculadoras.com/blog/como-calcular-porcentajes</loc>
     <lastmod>2025-03-19</lastmod>

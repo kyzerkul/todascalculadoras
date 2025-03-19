@@ -1,8 +1,13 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/calculadora/:path*", "destination": "/index.html" },
+    { "source": "/categoria/:path*", "destination": "/index.html" },
+    { "source": "/blog/:path*", "destination": "/index.html" },
+    { "source": "/sobre-nosotros", "destination": "/index.html" },
+    { "source": "/contacto", "destination": "/index.html" },
+    { "source": "/faq", "destination": "/index.html" },
+    { "source": "/legal", "destination": "/index.html" },
+    { "source": "/calculadoras", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

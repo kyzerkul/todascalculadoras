@@ -17,7 +17,7 @@ const categoryCalculators = {
     .filter(id => calculators[id].category === "financieras")
     .map(id => ({ id, ...calculators[id] })),
   cientificas: Object.keys(calculators)
-    .filter(id => calculators[id].category === "cientificas")
+    .filter(id => calculators[id].category === "cientificas" || calculators[id].category === "simuladores") // Combinamos científicas y simuladores
     .map(id => ({ id, ...calculators[id] })),
   conversiones: Object.keys(calculators)
     .filter(id => calculators[id].category === "conversiones")
@@ -34,12 +34,20 @@ const categoryCalculators = {
   ingenieria: Object.keys(calculators)
     .filter(id => calculators[id].category === "ingenieria")
     .map(id => ({ id, ...calculators[id] })),
+  estadisticas: Object.keys(calculators)
+    .filter(id => calculators[id].category === "matematicas" && 
+            (calculators[id].title.toLowerCase().includes("estadística") || 
+             calculators[id].description.toLowerCase().includes("estadística")))
+    .map(id => ({ id, ...calculators[id] })),
+  "programacion-y-tecnologia": Object.keys(calculators)
+    .filter(id => calculators[id].category === "conversiones" || calculators[id].category === "simuladores")
+    .map(id => ({ id, ...calculators[id] })),
 };
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
   const category = categories.find(
-    (cat) => cat.title.toLowerCase().replace(/\s+/g, "-") === categoryId?.toLowerCase()
+    (cat) => cat.title.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "") === categoryId?.toLowerCase()
   );
 
   if (!category) {
@@ -55,42 +63,45 @@ const CategoryPage = () => {
     );
   }
 
-  // Fix para cualquier variación del URL de "ingenieria" 
+  // Fix para cualquier variación del URL de categorías especiales
   let categoryCalcs;
-  if (categoryId?.toLowerCase().includes("ingenier")) {
-    // Si la categoría es ingeniería (con o sin acento), usar la clave "ingenieria"
+  let categoryKey = categoryId?.toLowerCase();
+  
+  if (categoryKey?.includes("ingenier")) {
     categoryCalcs = categoryCalculators["ingenieria"] || [];
+  } else if (categoryKey?.includes("estad")) {
+    categoryCalcs = categoryCalculators["estadisticas"] || [];
+  } else if (categoryKey?.includes("program") || categoryKey?.includes("tecnolog")) {
+    categoryCalcs = categoryCalculators["programacion-y-tecnologia"] || [];
+  } else if (categoryKey?.includes("cient")) {
+    categoryCalcs = categoryCalculators["cientificas"] || [];
   } else {
     // Para otras categorías, usar el ID normal
     categoryCalcs = categoryCalculators[categoryId as keyof typeof categoryCalculators] || [];
   }
 
-  // Debug logs  
-  console.log("CategoryID:", categoryId);
-  console.log("Category found:", category);
-  console.log("Calculators found:", categoryCalcs);
-  console.log("Available categories:", Object.keys(categoryCalculators));
+  // Si todavía no hay calculadoras, asegurémonos de mostrar al menos calculadoras relacionadas
+  if (categoryCalcs.length === 0) {
+    // Proporcionar calculadoras relacionadas o populares como alternativa
+    categoryCalcs = Object.keys(calculators)
+      .slice(0, 6) // Mostrar las 6 primeras calculadoras como ejemplo
+      .map(id => ({ id, ...calculators[id] }));
+  }
   
-  // Log ingenieria calculators specifically using imported calculators 
-  const ingenieriaCalcs = Object.keys(calculators)
-    .filter(id => calculators[id].category === "ingenieria")
-    .map(id => ({ id, ...calculators[id] }));
-  console.log("Ingenieria calculators (direct):", ingenieriaCalcs);
-
   // Création des données structurées pour la page de catégorie (Schema.org)
   const categorySchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": `Calculadoras ${category.title}`,
     "description": category.description,
-    "url": `https://calculadorahub.com/categoria/${categoryId}`,
+    "url": `https://todascalculadoras.com/categoria/${categoryId}`,
     "hasPart": categoryCalcs.map(calc => ({
       "@type": "SoftwareApplication",
       "name": calc.title,
       "description": calc.description,
       "applicationCategory": "CalculatorApplication",
       "operatingSystem": "Web",
-      "url": `https://calculadorahub.com/calculadora/${calc.id}`
+      "url": `https://todascalculadoras.com/calculadora/${calc.id}`
     }))
   };
 
@@ -125,33 +136,20 @@ const CategoryPage = () => {
 
         {/* Calculator Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-up">
-          {categoryCalcs.length > 0 ? (
-            categoryCalcs.map((calc) => (
-              <Card
-                key={calc.id}
-                className="hover:shadow-lg transition-shadow duration-300"
-              >
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{calc.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{calc.description}</p>
-                  <Button className="w-full" asChild>
-                    <Link to={`/${categoryId}/${calc.id}`}>Usar Calculadora</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))
-          ) : (
-            <div className="col-span-full text-center py-12">
-              <Calculator className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">
-                Calculadoras en desarrollo
-              </h3>
-              <p className="text-gray-600">
-                Estamos trabajando para traerte las mejores calculadoras en esta
-                categoría. ¡Vuelve pronto!
-              </p>
-            </div>
-          )}
+          {categoryCalcs.map((calc) => (
+            <Card
+              key={calc.id}
+              className="hover:shadow-lg transition-shadow duration-300"
+            >
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-lg mb-2">{calc.title}</h3>
+                <p className="text-sm text-gray-600 mb-4">{calc.description}</p>
+                <Button className="w-full" asChild>
+                  <Link to={`/calculadora/${calc.id}`}>Usar Calculadora</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
